@@ -1,4 +1,5 @@
 import {getPackageInfo} from './utils';
+import {invokeFunction} from './invocator';
 
 export const createServer = async () => {
 	const express = require('express');
@@ -22,10 +23,6 @@ export const listen = (app) => {
 	});
 };
 
-export const writeJson = (res) => {
-	return (content) => {
-		res.json(content);
-	};
-};
-
+export const writeJson = (res) => (content) => res.json(content);
 export const addInformationRoute = async (app) => app.get('/', (req, res) => getPackageInfo().then(writeJson(res)));
+export const handleFunctionRequest = async (app) => app.get('/invoke/:name', (req, res) => invokeFunction(req.params.name, req.body).then(writeJson(res)));
