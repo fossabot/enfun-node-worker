@@ -9,7 +9,7 @@ export const createServer = async () => {
 	const app = express();
 	app.use(bodyParser.json());
 	app.use(cors());
-	app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+	if(process.env.DEBUG) app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 	return app;
 };
 
@@ -25,4 +25,4 @@ export const listen = (app) => {
 
 export const writeJson = (res) => (content) => res.json(content);
 export const addInformationRoute = async (app) => app.get('/', (req, res) => getPackageInfo().then(writeJson(res)));
-export const handleFunctionRequest = async (app) => app.get('/invoke/:name', (req, res) => invokeFunction(req.params.name, req.body).then(writeJson(res)));
+export const handleFunctionRequest = async (app) => app.get('/invoke/:name', (req, res) => invokeFunction(req.params.name, req.params || {}, req.body || {}).then(writeJson(res)));
