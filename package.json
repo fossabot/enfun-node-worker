@@ -5,5 +5,19 @@
   "main": "dist",
   "repository": "https://github.com/enteam/enfun-node-worker.git",
   "author": "Matthew Wozniak <matisiek11@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.2.0",
+    "nodemon": "^1.18.3"
+  },
+  "scripts": {
+    "dev": "nodemon -w src --exec \"babel-node src\"",
+    "build": "babel src -s -D -d dist",
+    "start": "node dist",
+    "prestart": "npm run -s build",
+    "lint": "eslint src",
+    "test": "yarn lint"
+  }
 }
