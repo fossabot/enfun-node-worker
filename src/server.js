@@ -9,7 +9,7 @@ export const createServer = async () => {
 };
 
 export const listen = (app) => {
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve) => {
 		const consola = require('consola');
 		app.listen(process.env.PORT, () => {
 			consola.ready(`Server listening on ${process.env.PORT}`);
