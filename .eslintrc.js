@@ -11,7 +11,7 @@ module.exports = {
         ],
         "linebreak-style": [
             "error",
-            "unix"
+            "windows"
         ],
         "quotes": [
             "error",
@@ -21,5 +21,9 @@ module.exports = {
             "error",
             "always"
         ]
+    },
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2017
     }
 };
