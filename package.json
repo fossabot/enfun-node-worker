@@ -1,0 +1,9 @@
+{
+  "name": "enfun-node-worker",
+  "version": "0.0.1",
+  "description": "An enfun nodejs worker",
+  "main": "dist",
+  "repository": "https://github.com/enteam/enfun-node-worker.git",
+  "author": "Matthew Wozniak <matisiek11@gmail.com>",
+  "license": "MIT"
+}
